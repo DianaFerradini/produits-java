@@ -23,11 +23,15 @@ public class ProduitRepositoryImpl implements ProduitRepository {
         List<Produit> produits = database.getProduits();
         for (Produit produit : produits) {
             if (produit.getNom().equalsIgnoreCase(name)) {
-                System.out.println("Un produit avec ce nom existe déjà.");
                 return null;
             }
         }
         return Optional.empty();
+    }
+
+    @Override
+    public List<Produit> findAll() {
+        return database.getProduits();
     }
     
 }

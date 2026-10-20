@@ -1,11 +1,22 @@
 package com.ism.entity;
 
+import com.ism.dto.ProduitAddDto;
 
 public class Produit {
     private int id;
     private String nom;
     private double prix;
     private int quantite;
+
+    public Produit(String nom, double prix, int quantite) {
+        this.nom = nom;
+        this.prix = prix;
+        this.quantite = quantite;
+    }
+
+    public Produit() {
+    }
+    
     public int getId() {
         return id;
     }
@@ -29,5 +40,9 @@ public class Produit {
     }
     public void setQuantite(int quantite) {
         this.quantite = quantite;
+    }
+
+    public static Produit toEntity(ProduitAddDto dto) {
+        return new Produit(dto.nom, dto.prix, dto.quantite);
     }
 }
